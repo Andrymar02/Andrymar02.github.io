@@ -8,6 +8,11 @@
 <meta property="og:title" content="Andrea Marranca — Ingegnere informatico">
 <meta property="og:description" content="Dal C su microcontrollore ARM alle web app full-stack. Progetti, competenze e percorso di studi.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://andrymar02.github.io/">
+<!-- MODIFICA TU (opzionale): fai uno screenshot del sito, salvalo come img/preview.png
+     e togli il commento dalla riga sotto. È l'anteprima che compare quando condividi
+     il link su LinkedIn o WhatsApp: senza, l'anteprima resta vuota. -->
+<!-- <meta property="og:image" content="https://andrymar02.github.io/img/preview.png"> -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230D0B1C'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='18' fill='%238B7CF6' text-anchor='middle'%3E&gt;_%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -413,9 +418,9 @@
       <h2>Contatti</h2>
       <p class="sub">Il modo più veloce per raggiungermi è l'email.</p>
       <div class="contact">
-        <!-- MODIFICA: email e LinkedIn -->
-        <a href="mailto:tua@email.it"><span class="k">Email</span>andreamarranca@gmail.com</a>
+        <a href="mailto:andreamarranca@gmail.com"><span class="k">Email</span>andreamarranca@gmail.com</a>
         <a href="https://github.com/Andrymar02" target="_blank" rel="noopener"><span class="k">GitHub</span>Andrymar02</a>
+        <!-- MODIFICA TU: il tuo LinkedIn, in entrambi i punti della riga -->
         <a href="https://linkedin.com/in/utente" target="_blank" rel="noopener"><span class="k">LinkedIn</span>/in/utente</a>
       </div>
     </div>
@@ -493,7 +498,6 @@ const ICONS = {
 /* ============================================================
    2. SKILLS — livello da 1 a 5.
    Aggiungi, togli e ritocca liberamente: la pagina si aggiorna da sola.
-   MODIFICA: i livelli qui sotto sono una stima, correggili tu.
    ============================================================ */
 const SKILLS = [
   { group:"Linguaggi", items:[
@@ -850,5 +854,38 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   })();
 }
 </script>
+
+<!-- ============================================================
+     CONTATORE VISITE — GoatCounter
+     Senza cookie, quindi non serve nessun banner di consenso.
+
+     COME ATTIVARLO (2 minuti):
+     1. vai su https://www.goatcounter.com e registrati (gratis)
+     2. scegli un codice sito, es. "andrymar02"
+     3. sostituisci TUOCODICE qui sotto con quello che hai scelto
+     4. le statistiche saranno su https://TUOCODICE.goatcounter.com
+
+     Finché c'è scritto TUOCODICE lo script non viene caricato,
+     quindi puoi pubblicare il sito anche senza attivarlo.
+     ============================================================ -->
+<script>
+(function(){
+  const CODICE = 'TUOCODICE';   // <-- MODIFICA TU
+
+  // non conta se il codice non è stato impostato...
+  if(CODICE === 'TUOCODICE') return;
+  // ...e non conta le tue prove in locale (file:// o localhost)
+  const h = location.hostname;
+  if(!h || h === 'localhost' || h === '127.0.0.1') return;
+
+  window.goatcounter = {no_onload:false};
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://' + CODICE + '.goatcounter.com/count');
+  document.head.appendChild(s);
+})();
+</script>
+
 </body>
 </html>
