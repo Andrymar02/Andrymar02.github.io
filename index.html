@@ -868,24 +868,8 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
      Finché c'è scritto TUOCODICE lo script non viene caricato,
      quindi puoi pubblicare il sito anche senza attivarlo.
      ============================================================ -->
-<script>
-(function(){
-  const CODICE = 'andrymar02';  
-
-  // non conta se il codice non è stato impostato...
-  if(CODICE === 'andrymar02') return;
-  // ...e non conta le tue prove in locale (file:// o localhost)
-  const h = location.hostname;
-  if(!h || h === 'localhost' || h === '127.0.0.1') return;
-
-  window.goatcounter = {no_onload:false};
-  const s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://gc.zgo.at/count.js';
-  s.setAttribute('data-goatcounter', 'https://' + CODICE + '.goatcounter.com/count');
-  document.head.appendChild(s);
-})();
-</script>
+<script data-goatcounter="https://andrymar02.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
