@@ -279,7 +279,7 @@
       <div>
         <!-- MODIFICA: le tue aree, in maiuscolo -->
         <p class="eyebrow">Embedded + Web + Mobile</p>
-        <h1><span id="typed" data-text="Ciao, mondo!"></span><span class="cursor" aria-hidden="true"></span></h1>
+        <h1 aria-label="Ciao, mondo!"><span id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
         <!-- MODIFICA: la tua presentazione -->
         <p>Sono <strong>Andrea Marranca</strong>, ingegnere informatico. Mi muovo su livelli molto diversi dello stack: dal C e assembly su microcontrollore ARM alle web app full-stack in React e Node, passando per Android. Qui trovi i miei progetti e il mio percorso — scrivimi se vuoi collaborare o anche solo fare due chiacchiere.</p>
         <p class="ps">P.S. se ti va di sporcarti le mani, apri il <b>terminale</b> e scrivi <b>help</b>.</p>
@@ -857,19 +857,59 @@ const obs = new IntersectionObserver(entries => {
 }, {rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('main section').forEach(s => obs.observe(s));
 
-/* ---------- macchina da scrivere ---------- */
+/* ---------- macchina da scrivere multilingua ---------- */
+const SALUTI = [
+  {t:"Ciao, mondo!",      l:"it"},
+  {t:"Hello, world!",     l:"en"},
+  {t:"¡Hola, mundo!",     l:"es"},
+  {t:"Bonjour, monde !",  l:"fr"},
+  {t:"Hallo, Welt!",      l:"de"},
+  {t:"Olá, mundo!",       l:"pt"},
+  {t:"Hej, världen!",     l:"sv"},
+  {t:"Привет, мир!",      l:"ru"},
+  {t:"Γειά σου, κόσμε!",  l:"el"},
+  {t:"שלום, עולם!",       l:"he", rtl:true},
+  {t:"مرحبا بالعالم!",     l:"ar", rtl:true},
+  {t:"नमस्ते दुनिया!",       l:"hi"},
+  {t:"こんにちは世界！",    l:"ja"},
+  {t:"你好，世界！",        l:"zh"},
+  {t:"안녕, 세계!",         l:"ko"},
+  {t:"Merhaba dünya!",    l:"tr"},
+  {t:"Xin chào thế giới!",l:"vi"}
+];
+
 const typed = document.getElementById('typed');
-const testo = typed.dataset.text;
+const h1    = typed.closest('h1');
+
 if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  typed.textContent = testo;
+  typed.textContent = SALUTI[0].t;                  // niente animazione
 } else {
-  let i = 0;
-  (function scrivi(){
-    typed.textContent = testo.slice(0, ++i);
-    if(i < testo.length) setTimeout(scrivi, 70);
+  let i = 0;                                        // quale saluto
+  let n = 0;                                        // quante lettere mostrate
+  let cancella = false;
+
+  (function ciclo(){
+    const s = SALUTI[i];
+    typed.lang = s.l;
+    h1.dir = s.rtl ? 'rtl' : 'ltr';
+
+    n += cancella ? -1 : 1;
+    typed.textContent = [...s.t].slice(0, n).join('');
+
+    let attesa = cancella ? 40 : 80;
+
+    if(!cancella && n === [...s.t].length){
+      cancella = true;
+      attesa = 1600;                                // pausa a frase completa
+    } else if(cancella && n === 0){
+      cancella = false;
+      i = (i + 1) % SALUTI.length;
+      attesa = 350;                                 // pausa prima della lingua dopo
+    }
+
+    setTimeout(ciclo, attesa);
   })();
 }
-</script>
 
 <!-- ============================================================
      CONTATORE VISITE — GoatCounter
