@@ -279,15 +279,12 @@
   <section class="hero" id="home">
     <div class="wrap hero-grid">
       <div>
-        <!-- MODIFICA: le tue aree, in maiuscolo -->
-        <p class="eyebrow">Embedded + Web + Mobile</p>
+        <p class="eyebrow">AI + Web + Embedded</p>
         <h1 aria-label="Ciao, mondo!"><span id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
-        <!-- MODIFICA: la tua presentazione -->
         <p>Sono <strong>Andrea Marranca</strong>, ingegnere informatico. Mi muovo su livelli molto diversi dello stack: dal C e assembly su microcontrollore ARM alle web app full-stack in React e Node, passando per Android. Qui trovi i miei progetti e il mio percorso — scrivimi se vuoi collaborare o anche solo fare due chiacchiere.</p>
         <p class="ps">P.S. se ti va di sporcarti le mani, apri il <b>terminale</b> e scrivi <b>help</b>.</p>
         <div class="cta">
           <a class="btn" href="#progetti">Vedi i progetti</a>
-          <!-- MODIFICA: carica cv.pdf nel repo accanto a index.html -->
           <a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener">Apri il CV</a>
         </div>
       </div>
@@ -501,7 +498,8 @@ const ICONS = {
   riscv:    {label:"RISC-V",     txt:"RV"},
   arm:      {label:"ARM Cortex-M", txt:"ARM"},
   keil:     {label:"Keil µVision", txt:"µV"},
-  telegram: {label:"Telegram Bot API", txt:"TG"}
+  telegram: {label:"Telegram Bot API", txt:"TG"},
+  fastapi: {label:"FastAPI", path:"fastapi/fastapi-original"}
 };
 
 /* ============================================================
@@ -615,6 +613,14 @@ const PROJECTS = [
     tech:["c","keil","arm"],
     url:"https://github.com/Andrymar02/Template_ASE",
     desc:"Progetto base pronto all'uso per la scheda LandTiger: driver e periferiche già configurati, così un nuovo progetto parte dal codice che conta invece che dal setup."
+  },
+       {
+    name:"ateneo-search",
+    kind:"AI · Progetto personale",
+    img:"img/ateneo_search.png",
+    tech:["python","sqlite","react","js"],
+    url:"https://github.com/Andrymar02/ateneo-search",
+    desc:"Motore di ricerca semantica sui materiali universitari: risponde a domande in linguaggio naturale citando sempre file e pagina di origine. Embedding locali con sentence-transformers e archivio vettoriale su SQLite. Il set di valutazione scritto a mano ha permesso di diagnosticare due difetti del retrieval e portare il recall@5 dal 50% al XX% su NN domande."
   },
      {
     name:"BIT-Tycon",
@@ -763,8 +769,8 @@ function runCmd(riga){
 
   // MODIFICA: aggiorna questa riga ogni tanto, è quella che fa sembrare il sito vivo
   if(cmd === 'now')
-    return ['Sto studiando per la magistrale al Politecnico e sistemando il BotPalestra.'];
-
+    return ['Ho appena finito ateneo-search, ricerca semantica sui miei appunti universitari.'];
+     
   if(cmd === 'skills'){
     const top = SKILLS.map(g => '  ' + g.group + ': ' +
       g.items.filter(s => s.lv >= 4).map(s => (ICONS[s.k]||{label:s.k}).label).join(', ')
