@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Zagara — B&amp;B a Ortigia, Siracusa (sito dimostrativo)</title>
+<meta name="description" content="Sito dimostrativo di un B&B di fantasia a Ortigia, realizzato da Andrea Marranca.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --calce:#FDFDFB;      /* muri imbiancati */
+    --cobalto:#1E4C9A;    /* maiolica */
+    --limone:#E7B417;
+    --foglia:#4C6B3C;
+    --inchiostro:#16202E;
+    --tenue:#5A6372;
+    --linea:#DCE2EA;
+    --cielo:#EEF3F9;
+    --serif:"Young Serif", Georgia, serif;
+    --sans:"Instrument Sans", system-ui, -apple-system, sans-serif;
+    --maiolica:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23FDFDFB'/%3E%3Cg fill='%231E4C9A'%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='80' cy='0' r='20'/%3E%3Ccircle cx='0' cy='80' r='20'/%3E%3Ccircle cx='80' cy='80' r='20'/%3E%3C/g%3E%3Cg fill='%234C6B3C'%3E%3Cellipse cx='40' cy='0' rx='4' ry='9'/%3E%3Cellipse cx='40' cy='80' rx='4' ry='9'/%3E%3Cellipse cx='0' cy='40' rx='9' ry='4'/%3E%3Cellipse cx='80' cy='40' rx='9' ry='4'/%3E%3C/g%3E%3Cpath d='M40 17 63 40 40 63 17 40Z' fill='none' stroke='%231E4C9A' stroke-width='2.5'/%3E%3Cpath d='M40 23 57 40 40 57 23 40Z' fill='%23E7B417'/%3E%3Ccircle cx='40' cy='40' r='7' fill='%231E4C9A'/%3E%3Ccircle cx='40' cy='40' r='2.5' fill='%23FDFDFB'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--calce); color:var(--inchiostro); font-family:var(--sans); font-size:17px; line-height:1.6}
+  a{color:var(--cobalto)}
+  :focus-visible{outline:3px solid var(--limone); outline-offset:2px; border-radius:4px}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px}
+  h1,h2,h3{font-family:var(--serif); font-weight:400; letter-spacing:-.01em}
+
+  .avviso{background:var(--inchiostro); color:#CDD3DC; font-size:14px; text-align:center; padding:8px 16px; margin:0}
+  .avviso a{color:#fff}
+
+  .testata{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 0}
+  .logo{font-family:var(--serif); font-size:24px; color:var(--cobalto); text-decoration:none}
+  .nav{display:flex; align-items:center; gap:26px}
+  .nav a{color:var(--inchiostro); text-decoration:none; font-weight:500; font-size:15px}
+  .nav a:hover{color:var(--cobalto)}
+  @media (max-width:780px){
+    .nav a:not(.bottone){display:none}
+    .nav .bottone{padding:10px 14px; font-size:14px}
+  }
+  .bottone{display:inline-block; background:var(--cobalto); color:#fff !important; text-decoration:none; font:inherit;
+    font-weight:600; font-size:15px; padding:12px 22px; border-radius:999px; border:0; cursor:pointer; white-space:nowrap}
+  .bottone:hover{background:#173D7D}
+  .bottone:disabled{background:#9AA6B8; cursor:not-allowed}
+
+  /* apertura: la maiolica è l'elemento che si ricorda */
+  .apertura{background:var(--maiolica) 0 0/80px 80px; padding:72px 0}
+  .pannello{background:var(--calce); max-width:600px; padding:44px 48px 46px; border-radius:4px;
+    box-shadow:0 0 0 10px var(--calce), 0 0 0 12px var(--cobalto)}
+  @media (max-width:640px){ .apertura{padding:40px 0; background-size:60px 60px} .pannello{padding:30px 24px 32px} }
+  .pannello h1{font-size:clamp(34px,5vw,52px); line-height:1.08; margin:0 0 18px; color:var(--inchiostro)}
+  .pannello p{margin:0 0 26px; color:#3B4554; max-width:46ch}
+  .da{display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px}
+  .da span{color:var(--tenue); font-size:15px}
+  .da b{color:var(--inchiostro); font-size:19px}
+
+  section{padding:84px 0}
+  .cielo{background:var(--cielo)}
+  h2{font-size:clamp(30px,4vw,42px); line-height:1.1; margin:0 0 12px}
+  .sotto{color:var(--tenue); max-width:58ch; margin:0 0 40px}
+
+  /* camere */
+  .camere{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+  @media (max-width:900px){ .camere{grid-template-columns:1fr} }
+  .camera{background:#fff; border:1px solid var(--linea); border-radius:6px; overflow:hidden; display:flex; flex-direction:column}
+  .camera .striscia{height:14px; background:var(--maiolica) 0 0/28px 28px; border-bottom:1px solid var(--linea)}
+  .camera .dentro{padding:24px 24px 26px; display:flex; flex-direction:column; flex:1}
+  .camera h3{font-size:25px; margin:0 0 6px}
+  .camera p{color:var(--tenue); font-size:15.5px; margin:0 0 16px}
+  .camera ul{margin:0 0 22px; padding:0; list-style:none; font-size:15.5px}
+  .camera li{padding:6px 0; border-top:1px solid var(--linea)}
+  .camera .piede{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .camera .prezzo{font-size:15px; color:var(--tenue)}
+  .camera .prezzo b{font-size:22px; color:var(--inchiostro); font-weight:600}
+  .link-bottone{background:none; border:2px solid var(--cobalto); color:var(--cobalto); font:inherit; font-weight:600; font-size:15px;
+    padding:9px 16px; border-radius:999px; cursor:pointer}
+  .link-bottone:hover{background:var(--cobalto); color:#fff}
+
+  /* prenota */
+  .prenota{display:grid; grid-template-columns:1.25fr .75fr; gap:40px; align-items:start}
+  @media (max-width:900px){ .prenota{grid-template-columns:1fr} .riepilogo{position:static} }
+  .scelta-camera{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px}
+  .scelta-camera button{font:inherit; font-size:15px; font-weight:500; background:#fff; color:var(--inchiostro);
+    border:1.5px solid var(--linea); border-radius:999px; padding:8px 16px; cursor:pointer}
+  .scelta-camera button[aria-pressed="true"]{background:var(--inchiostro); border-color:var(--inchiostro); color:#fff}
+  .calendario{background:#fff; border:1px solid var(--linea); border-radius:6px; padding:22px}
+  .cal-testa{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
+  .cal-testa h3{margin:0; font-size:22px; text-transform:capitalize}
+  .cal-testa button{font:inherit; font-size:20px; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--linea); background:#fff; cursor:pointer; color:var(--inchiostro)}
+  .cal-testa button:disabled{opacity:.35; cursor:not-allowed}
+  .griglia{display:grid; grid-template-columns:repeat(7,1fr); gap:4px; text-align:center}
+  .griglia .gs{font-size:13px; color:var(--tenue); padding:4px 0}
+  .griglia button{font:inherit; font-size:15px; aspect-ratio:1/1; border:0; border-radius:6px; background:var(--cielo); color:var(--inchiostro); cursor:pointer; padding:0}
+  .griglia button:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--cobalto)}
+  .griglia button:disabled{background:transparent; color:#B5BCC7; cursor:not-allowed}
+  .griglia button.occupato{background:transparent; color:#B5BCC7; text-decoration:line-through}
+  .griglia button.nel{background:#C9D8F0}
+  .griglia button.capo{background:var(--cobalto); color:#fff}
+  .legenda{display:flex; flex-wrap:wrap; gap:6px 20px; font-size:14px; color:var(--tenue); margin-top:16px}
+  .legenda i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+
+  .riepilogo{background:#fff; border:1px solid var(--linea); border-radius:6px; padding:26px; position:sticky; top:20px}
+  .riepilogo h3{font-size:24px; margin:0 0 4px}
+  .riepilogo .stato{color:var(--tenue); font-size:15px; margin:0 0 18px; min-height:1.6em}
+  .riepilogo dl{margin:0 0 18px; display:grid; grid-template-columns:1fr auto; gap:8px 0; font-size:15.5px}
+  .riepilogo dd{padding-left:12px}
+  .riepilogo dt{color:var(--tenue)}
+  .riepilogo dd{margin:0; text-align:right; font-weight:500}
+  .riepilogo .totale{border-top:1px solid var(--linea); padding-top:12px; font-size:18px}
+  .riepilogo .totale dd{font-weight:700}
+  .riepilogo label{display:flex; flex-direction:column; gap:6px; font-weight:500; font-size:15px; margin-bottom:14px}
+  .riepilogo select, .riepilogo input{font:inherit; font-size:16px; padding:10px 12px; border:1.5px solid var(--linea); border-radius:6px; background:#fff; color:inherit}
+  .riepilogo .bottone{width:100%; margin-top:6px}
+  .riepilogo small{display:block; color:var(--tenue); font-size:13.5px; margin-top:12px; line-height:1.5}
+  .anteprima{display:none; margin-top:16px; background:var(--cielo); border-left:4px solid var(--foglia); padding:14px 16px; font-size:15px; white-space:pre-line; border-radius:0 6px 6px 0}
+  .anteprima.vista{display:block}
+
+  /* casa e dove */
+  .servizi{display:grid; grid-template-columns:repeat(2,1fr); gap:0 48px; max-width:860px; padding:0; margin:0; list-style:none}
+  @media (max-width:640px){ .servizi{grid-template-columns:1fr} }
+  .servizi li{padding:14px 0; border-top:1px solid var(--linea)}
+  .servizi b{display:block; font-weight:600}
+  .servizi span{color:var(--tenue); font-size:15.5px}
+  .due{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+  @media (max-width:860px){ .due{grid-template-columns:1fr} }
+  address{font-style:normal; margin:0 0 18px}
+  .distanze{list-style:none; padding:0; margin:0}
+  .distanze li{display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid var(--linea)}
+  .distanze li span:last-child{color:var(--tenue)}
+  .mappa{width:100%; aspect-ratio:4/3; border:0; border-radius:6px}
+
+  footer{background:var(--inchiostro); color:#AEB6C2; font-size:15px; padding:36px 0 44px}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 32px}
+  footer a{color:#fff}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<p class="avviso">Sito dimostrativo: il B&amp;B è di fantasia. Realizzato da <a href="../../">Andrea Marranca</a>.</p>
+
+<div class="wrap">
+  <header class="testata">
+    <a class="logo" href="#">Casa Zagara</a>
+    <nav class="nav" aria-label="Navigazione">
+      <a href="#camere">Le camere</a>
+      <a href="#casa">La casa</a>
+      <a href="#dove">Dove siamo</a>
+      <a class="bottone" href="#prenota">Verifica le date</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <div class="apertura">
+    <div class="wrap">
+      <div class="pannello">
+        <h1>Tre camere su un cortile di limoni, nel cuore di Ortigia.</h1>
+        <p>Una casa dell'Ottocento a due minuti dal mare. Colazione con granita e brioche, e la sera il terrazzo è tutto vostro.</p>
+        <div class="da">
+          <a class="bottone" href="#prenota">Verifica le date</a>
+          <span>Camere da <b>85 €</b> a notte, colazione inclusa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="camere">
+    <div class="wrap">
+      <h2>Le camere</h2>
+      <p class="sotto">Tutte con bagno privato, aria condizionata e lenzuola di lino. Prenotando qui paghi meno che sui portali.</p>
+      <div class="camere" id="camere-lista"></div>
+    </div>
+  </section>
+
+  <section class="cielo" id="prenota">
+    <div class="wrap">
+      <h2>Verifica le date</h2>
+      <p class="sotto">Scegli la camera, poi tocca il giorno di arrivo e quello di partenza. Il prezzo si calcola da solo.</p>
+      <div class="prenota">
+        <div>
+          <div class="scelta-camera" id="scelta-camera" aria-label="Camera"></div>
+          <div class="calendario">
+            <div class="cal-testa">
+              <button type="button" id="prec" aria-label="Mese precedente">‹</button>
+              <h3 id="mese" aria-live="polite"></h3>
+              <button type="button" id="succ" aria-label="Mese successivo">›</button>
+            </div>
+            <div class="griglia" id="griglia"></div>
+            <div class="legenda">
+              <span><i style="background:var(--cielo)"></i>Libero</span>
+              <span><i style="background:transparent; box-shadow:inset 0 0 0 1px #B5BCC7"></i>Occupato</span>
+              <span><i style="background:var(--cobalto)"></i>Le tue date</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="riepilogo" aria-labelledby="riep-titolo">
+          <h3 id="riep-titolo">Il tuo soggiorno</h3>
+          <p class="stato" id="stato">Scegli il giorno di arrivo.</p>
+          <dl id="conto"></dl>
+          <label>Ospiti<select id="ospiti"></select></label>
+          <label>Il tuo nome<input id="nome" autocomplete="name"></label>
+          <button class="bottone" type="button" id="invia" disabled>Invia la richiesta su WhatsApp</button>
+          <small>Nessun pagamento adesso: ti rispondiamo noi per confermare. Tassa di soggiorno esclusa, si paga in struttura.</small>
+          <div class="anteprima" id="anteprima" role="status" aria-live="polite"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="casa">
+    <div class="wrap">
+      <h2>La casa</h2>
+      <p class="sotto">Una casa di famiglia restaurata con le maioliche originali. Siamo Lucia e Salvo, e abitiamo al piano di sopra.</p>
+      <ul class="servizi">
+        <li><b>Colazione siciliana</b><span>Granita, brioche col tuppo, ricotta e frutta, servite in cortile.</span></li>
+        <li><b>Terrazzo sui tetti</b><span>Aperto a tutti gli ospiti, con lettini e vista sul porto.</span></li>
+        <li><b>Arrivo quando vuoi</b><span>Check-in dalle 14, anche in autonomia con codice.</span></li>
+        <li><b>Wi-Fi veloce</b><span>Fibra in tutta la casa, se devi lavorare.</span></li>
+        <li><b>Biciclette</b><span>Due bici a disposizione per girare l'isola.</span></li>
+        <li><b>Consigli veri</b><span>Dove mangiare e quale spiaggia scegliere, a seconda del vento.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cielo" id="dove">
+    <div class="wrap due">
+      <div>
+        <h2>Dove siamo</h2>
+        <address>Via della Giudecca 00, 96100 Siracusa<br>Isola di Ortigia, zona a traffico limitato</address>
+        <ul class="distanze">
+          <li><span>Duomo e piazza</span><span>5 minuti a piedi</span></li>
+          <li><span>Fonte Aretusa</span><span>8 minuti a piedi</span></li>
+          <li><span>Solarium di Forte Vigliena</span><span>4 minuti a piedi</span></li>
+          <li><span>Stazione di Siracusa</span><span>20 minuti a piedi</span></li>
+          <li><span>Aeroporto di Catania</span><span>1 ora in auto o bus</span></li>
+        </ul>
+      </div>
+      <iframe class="mappa" title="Mappa: Ortigia, Siracusa" loading="lazy"
+        src="https://maps.google.com/maps?q=Ortigia%2C%20Siracusa&z=15&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Casa Zagara · Via della Giudecca 00, Siracusa · CIN IT089017C0000000000 (esempio)</span>
+    <span>Sito realizzato da <a href="../../">Andrea Marranca</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---------- dati: per un cliente vero basta cambiare questi ---------- */
+const CAMERE = [
+  {nome:"Camera Limone",    prezzo:85,  max:2, mq:18, desc:"La più raccolta, con la finestra sul cortile e il profumo degli alberi.",
+   dettagli:["Letto matrimoniale", "Affaccio sul cortile", "Doccia in pietra di Modica"]},
+  {nome:"Camera Gelsomino", prezzo:105, max:3, mq:22, desc:"Luminosa, con un balconcino sul vicolo. Va bene anche per una famiglia piccola.",
+   dettagli:["Matrimoniale e divano letto", "Balconcino", "Fino a 3 ospiti"]},
+  {nome:"Suite Aretusa",    prezzo:140, max:2, mq:30, desc:"All'ultimo piano, con un terrazzino privato da cui si vede il mare.",
+   dettagli:["Letto king size", "Terrazzino vista mare", "Vasca da bagno"]}
+];
+const NUMERO_WHATSAPP = ""; // es. "393401234567". Vuoto = demo, mostra solo l'anteprima
+
+/* ---------- utilità date ---------- */
+const OGGI = new Date(); OGGI.setHours(0,0,0,0);
+const giorno = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+const piu = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const stesso = (a, b) => a && b && a.getTime() === b.getTime();
+const fmt = d => d.toLocaleDateString('it-IT', {weekday:'short', day:'numeric', month:'short'});
+const euro = n => n.toLocaleString('it-IT') + ' €';
+
+/* disponibilità finta ma stabile: in un sito vero arriverebbe da un calendario condiviso */
+function occupato(c, d){
+  const settimana = Math.floor((d - new Date(2026,0,1)) / 864e5 / 3);
+  return ((settimana * 37 + c * 11) % 7) < 2;
+}
+
+/* ---------- stato ---------- */
+let camera = 0, arrivo = null, partenza = null;
+let mostrato = new Date(OGGI.getFullYear(), OGGI.getMonth(), 1);
+
+/* ---------- camere ---------- */
+document.getElementById('camere-lista').innerHTML = CAMERE.map((c, i) =>
+  '<article class="camera"><div class="striscia"></div><div class="dentro">' +
+  '<h3>' + c.nome + '</h3><p>' + c.desc + '</p>' +
+  '<ul><li>' + c.mq + ' m²</li>' + c.dettagli.map(x => '<li>' + x + '</li>').join('') + '</ul>' +
+  '<div class="piede"><span class="prezzo"><b>' + c.prezzo + ' €</b> a notte</span>' +
+  '<button class="link-bottone" type="button" data-camera="' + i + '">Verifica le date</button></div>' +
+  '</div></article>'
+).join('');
+document.querySelectorAll('[data-camera]').forEach(b => b.addEventListener('click', () => {
+  scegliCamera(Number(b.dataset.camera));
+  document.getElementById('prenota').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}));
+
+const scelta = document.getElementById('scelta-camera');
+scelta.innerHTML = CAMERE.map((c, i) => '<button type="button" data-i="' + i + '">' + c.nome + '</button>').join('');
+scelta.querySelectorAll('button').forEach(b => b.addEventListener('click', () => scegliCamera(Number(b.dataset.i))));
+
+function scegliCamera(i){
+  camera = i;
+  scelta.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', Number(b.dataset.i) === i));
+  const osp = document.getElementById('ospiti');
+  osp.innerHTML = Array.from({length: CAMERE[i].max}, (_, k) => '<option' + (k === 1 ? ' selected' : '') + '>' + (k + 1) + '</option>').join('');
+  // se le date scelte non sono libere per la nuova camera, si ricomincia
+  if(arrivo && !libero(arrivo, partenza || piu(arrivo, 1))){ arrivo = partenza = null; }
+  disegna();
+}
+
+function libero(da, a){
+  for(let d = da; d < a; d = piu(d, 1)) if(occupato(camera, d)) return false;
+  return true;
+}
+
+/* ---------- calendario ---------- */
+const griglia = document.getElementById('griglia');
+function disegna(){
+  const anno = mostrato.getFullYear(), mese = mostrato.getMonth();
+  document.getElementById('mese').textContent = mostrato.toLocaleDateString('it-IT', {month:'long', year:'numeric'});
+  document.getElementById('prec').disabled = anno === OGGI.getFullYear() && mese === OGGI.getMonth();
+  let html = ['lun','mar','mer','gio','ven','sab','dom'].map(g => '<span class="gs">' + g + '</span>').join('');
+  const primo = (new Date(anno, mese, 1).getDay() + 6) % 7;
+  for(let k = 0; k < primo; k++) html += '<span></span>';
+  const giorni = new Date(anno, mese + 1, 0).getDate();
+  for(let n = 1; n <= giorni; n++){
+    const d = new Date(anno, mese, n);
+    const passato = d < OGGI;
+    const occ = !passato && occupato(camera, d);
+    // il giorno di partenza può essere una notte occupata: si libera la camera la mattina
+    const partenzaPossibile = arrivo && !partenza && d > arrivo && libero(arrivo, d);
+    let cls = '';
+    if(occ) cls = 'occupato';
+    if(arrivo && partenza && d > arrivo && d < partenza) cls = 'nel';
+    if(stesso(d, arrivo) || stesso(d, partenza)) cls = 'capo';
+    const off = passato || (occ && !partenzaPossibile && !stesso(d, partenza));
+    html += '<button type="button" class="' + cls + '" data-d="' + d.getTime() + '"' + (off ? ' disabled' : '') +
+            ' aria-label="' + d.toLocaleDateString('it-IT', {weekday:'long', day:'numeric', month:'long'}) + (occ ? ', occupato' : '') + '">' + n + '</button>';
+  }
+  griglia.innerHTML = html;
+  griglia.querySelectorAll('button').forEach(b => b.addEventListener('click', () => tocca(new Date(Number(b.dataset.d)))));
+  riepiloga();
+}
+
+function tocca(d){
+  if(!arrivo || partenza || d <= arrivo){ arrivo = d; partenza = null; }
+  else if(libero(arrivo, d)){ partenza = d; }
+  else { arrivo = d; partenza = null; }
+  if(arrivo && occupato(camera, arrivo)){ arrivo = null; }
+  disegna();
+}
+
+document.getElementById('prec').addEventListener('click', () => { mostrato = new Date(mostrato.getFullYear(), mostrato.getMonth() - 1, 1); disegna(); });
+document.getElementById('succ').addEventListener('click', () => { mostrato = new Date(mostrato.getFullYear(), mostrato.getMonth() + 1, 1); disegna(); });
+
+/* ---------- riepilogo e richiesta ---------- */
+function riepiloga(){
+  const c = CAMERE[camera];
+  const stato = document.getElementById('stato');
+  const conto = document.getElementById('conto');
+  const invia = document.getElementById('invia');
+  if(!arrivo){ stato.textContent = 'Scegli il giorno di arrivo.'; conto.innerHTML = ''; invia.disabled = true; return; }
+  if(!partenza){ stato.textContent = 'Arrivo ' + fmt(arrivo) + '. Ora scegli il giorno di partenza.'; conto.innerHTML = ''; invia.disabled = true; return; }
+  const notti = Math.round((partenza - arrivo) / 864e5);
+  stato.textContent = c.nome + ', libera per le tue date.';
+  conto.innerHTML =
+    '<dt>Arrivo</dt><dd>' + fmt(arrivo) + '</dd>' +
+    '<dt>Partenza</dt><dd>' + fmt(partenza) + '</dd>' +
+    '<dt>' + notti + (notti === 1 ? ' notte' : ' notti') + ' × ' + euro(c.prezzo) + '</dt><dd>' + euro(notti * c.prezzo) + '</dd>' +
+    '<dt class="totale">Totale</dt><dd class="totale">' + euro(notti * c.prezzo) + '</dd>';
+  invia.disabled = false;
+}
+
+document.getElementById('invia').addEventListener('click', () => {
+  const c = CAMERE[camera];
+  const notti = Math.round((partenza - arrivo) / 864e5);
+  const nome = document.getElementById('nome').value.trim();
+  const msg = 'Ciao, vorrei prenotare la ' + c.nome + ' dal ' + fmt(arrivo) + ' al ' + fmt(partenza) +
+              ' (' + notti + (notti === 1 ? ' notte' : ' notti') + ') per ' + document.getElementById('ospiti').value + ' ospiti.' +
+              (nome ? ' Mi chiamo ' + nome + '.' : '') + ' Totale indicato sul sito: ' + euro(notti * c.prezzo) + '.';
+  if(NUMERO_WHATSAPP){
+    window.open('https://wa.me/' + NUMERO_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  } else {
+    const box = document.getElementById('anteprima');
+    box.textContent = 'Questo è il messaggio che arriverebbe al B&B:\n\n' + msg;
+    box.classList.add('vista');
+  }
+});
+
+scegliCamera(0);
+</script>
+</body>
+</html>
