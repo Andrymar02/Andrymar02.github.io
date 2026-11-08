@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barberia Nello — barbiere all'Isola, Milano (sito dimostrativo)</title>
+<meta name="description" content="Sito dimostrativo di una barberia di fantasia a Milano, realizzato da Andrea Marranca.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,800;1,6..96,700;1,6..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vetro:#0F3B30;     /* vetrina verde bottiglia */
+    --vetro2:#0B2E25;
+    --ottone:#C79A3B;
+    --ottone-chiaro:#E6C677;
+    --rosso:#B3261E;     /* solo per il palo */
+    --chiaro:#F2F4F1;
+    --inchiostro:#121614;
+    --tenue:#5B655F;
+    --linea:#D9DED9;
+    --bodoni:"Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+    --sans:"Manrope", system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:#fff; color:var(--inchiostro); font-family:var(--sans); font-size:17px; line-height:1.6}
+  a{color:var(--vetro)}
+  :focus-visible{outline:3px solid var(--ottone); outline-offset:2px; border-radius:4px}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px}
+
+  .avviso{background:var(--inchiostro); color:#C9CFCB; font-size:14px; text-align:center; padding:8px 16px; margin:0}
+  .avviso a{color:#fff}
+
+  /* vetrina */
+  .vetrina{background:radial-gradient(120% 90% at 50% 0%, #15503F 0%, var(--vetro) 45%, var(--vetro2) 100%); color:#E9EEEA; padding:0 0 84px}
+  .testata{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 0}
+  .marchio{font-family:var(--bodoni); font-style:italic; font-weight:700; font-size:22px; color:var(--ottone-chiaro); text-decoration:none}
+  .nav{display:flex; gap:26px; align-items:center}
+  .nav a{color:#D5DDD8; text-decoration:none; font-weight:500; font-size:15px}
+  .nav a:hover{color:#fff}
+  @media (max-width:760px){ .nav a:not(.bottone){display:none} .nav .bottone{padding:10px 16px; font-size:14px} }
+  .bottone{display:inline-block; background:var(--ottone); color:var(--inchiostro) !important; text-decoration:none; font:inherit;
+    font-weight:700; font-size:15px; padding:12px 24px; border-radius:3px; border:0; cursor:pointer; white-space:nowrap}
+  .bottone:hover{background:var(--ottone-chiaro)}
+  .bottone:disabled{background:#AEB6B1; cursor:not-allowed}
+
+  .insegna{display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; padding-top:56px}
+  @media (max-width:700px){ .insegna{grid-template-columns:1fr; gap:28px; padding-top:28px} .palo{display:none} }
+  /* il palo del barbiere: l'unico movimento della pagina */
+  .palo{width:44px; height:260px; border-radius:22px; position:relative; overflow:hidden;
+    box-shadow:0 0 0 4px var(--ottone), 0 0 0 5px #8a6a26, inset -8px 0 14px rgba(0,0,0,.25), inset 8px 0 12px rgba(255,255,255,.35);
+    background:repeating-linear-gradient(-45deg, var(--rosso) 0 14px, #fff 14px 28px, #24497A 28px 42px, #fff 42px 56px);
+    background-size:100% 79.2px}
+  @media (prefers-reduced-motion: no-preference){ .palo{animation:gira 2.4s linear infinite} @keyframes gira{to{background-position:0 79.2px}} }
+  .insegna h1{font-family:var(--bodoni); font-style:italic; font-weight:800; font-size:clamp(56px,10vw,128px); line-height:.9; letter-spacing:-.01em; margin:0 0 22px;
+    background:linear-gradient(180deg, #F3DDA0 0%, var(--ottone) 55%, #9C7428 100%); -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 2px 0 rgba(0,0,0,.08)}
+  .insegna .riga-oro{height:2px; background:linear-gradient(90deg, var(--ottone), transparent); max-width:520px; margin:0 0 22px}
+  .insegna p{font-size:19px; max-width:42ch; margin:0 0 18px; color:#D5DDD8}
+  .stato{display:flex; align-items:center; gap:10px; font-weight:500; margin:0 0 28px !important; font-size:16px !important}
+  .stato i{width:10px; height:10px; border-radius:50%; background:#8C9690}
+  .stato.aperto i{background:#5BC27A; box-shadow:0 0 0 4px rgba(91,194,122,.2)}
+
+  section{padding:84px 0}
+  .chiara{background:var(--chiaro)}
+  h2{font-family:var(--bodoni); font-weight:800; font-size:clamp(34px,4.6vw,50px); line-height:1.05; margin:0 0 12px; letter-spacing:-.01em}
+  .sotto{color:var(--tenue); max-width:58ch; margin:0 0 38px}
+
+  /* listino */
+  .listino{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 56px}
+  @media (max-width:760px){ .listino{grid-template-columns:1fr} }
+  .listino li{padding:18px 0; border-top:1px solid var(--linea)}
+  .listino .r{display:flex; align-items:baseline; gap:12px}
+  .listino .r b{font-size:19px; font-weight:700}
+  .listino .r::after{content:""; order:1; flex:1; border-bottom:2px dotted #B9C0BB; transform:translateY(-5px)}
+  .listino .r span{order:2; font-family:var(--bodoni); font-weight:800; font-size:22px}
+  .listino p{margin:2px 0 0; color:var(--tenue); font-size:15.5px}
+
+  /* prenotazione */
+  .passi{display:grid; gap:34px; max-width:820px}
+  .passo h3{font-size:18px; font-weight:700; margin:0 0 12px; display:flex; gap:12px; align-items:center}
+  .passo h3 em{font-style:normal; font-family:var(--bodoni); font-weight:800; font-size:20px; width:34px; height:34px; border-radius:50%;
+    display:grid; place-items:center; background:var(--vetro); color:var(--ottone-chiaro); flex:none}
+  .scelte{display:flex; flex-wrap:wrap; gap:8px}
+  .scelte button{font:inherit; font-size:15px; font-weight:500; background:#fff; color:var(--inchiostro); border:1.5px solid var(--linea);
+    border-radius:3px; padding:9px 15px; cursor:pointer; line-height:1.3; text-align:left}
+  .scelte button small{display:block; color:var(--tenue); font-size:13px}
+  .scelte button:hover:not(:disabled){border-color:var(--vetro)}
+  .scelte button[aria-pressed="true"]{background:var(--vetro); border-color:var(--vetro); color:#fff}
+  .scelte button[aria-pressed="true"] small{color:#BFD0C8}
+  .scelte button:disabled{color:#B3BAB5; background:transparent; text-decoration:line-through; cursor:not-allowed}
+  .orari-slot button{min-width:76px; text-align:center}
+  .vuoto{color:var(--tenue); font-size:15.5px; margin:0}
+
+  .conferma{margin-top:36px; max-width:820px; background:#fff; border:1.5px solid var(--linea); border-left:5px solid var(--ottone); border-radius:3px; padding:22px 24px}
+  .conferma p{margin:0 0 14px}
+  .conferma .campi{display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end}
+  .conferma label{display:flex; flex-direction:column; gap:6px; font-weight:500; font-size:15px; flex:1; min-width:200px}
+  .conferma input{font:inherit; font-size:16px; padding:11px 12px; border:1.5px solid var(--linea); border-radius:3px}
+  .conferma input:focus{border-color:var(--vetro); outline:none}
+  .anteprima{display:none; margin-top:16px; background:var(--chiaro); padding:14px 16px; font-size:15px; white-space:pre-line; border-radius:3px}
+  .anteprima.vista{display:block}
+
+  /* orari e dove */
+  .due{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
+  @media (max-width:860px){ .due{grid-template-columns:1fr} }
+  .orari{width:100%; border-collapse:collapse}
+  .orari td{padding:10px 0; border-top:1px solid var(--linea)}
+  .orari td:last-child{text-align:right}
+  .orari tr.oggi td{font-weight:700; color:var(--vetro)}
+  address{font-style:normal; margin:0 0 22px}
+  .mappa{width:100%; aspect-ratio:4/3; border:0; border-radius:3px; filter:grayscale(.4)}
+
+  footer{background:var(--vetro2); color:#A9B6AF; font-size:15px; padding:36px 0 44px}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 32px}
+  footer a{color:#fff}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<p class="avviso">Sito dimostrativo: la barberia è di fantasia. Realizzato da <a href="../../">Andrea Marranca</a>.</p>
+
+<header class="vetrina">
+  <div class="wrap">
+    <div class="testata">
+      <a class="marchio" href="#">Barberia Nello</a>
+      <nav class="nav" aria-label="Navigazione">
+        <a href="#listino">Listino</a>
+        <a href="#orari">Orari e indirizzo</a>
+        <a class="bottone" href="#prenota">Prenota</a>
+      </nav>
+    </div>
+
+    <div class="insegna">
+      <div class="palo" aria-hidden="true"></div>
+      <div>
+        <h1>Barberia Nello</h1>
+        <div class="riga-oro"></div>
+        <p>Taglio, barba e rasatura a panno caldo dal 1987, nel quartiere Isola. Prenoti in trenta secondi, senza telefonare.</p>
+        <p class="stato" id="stato"><i></i><span>Orari di oggi</span></p>
+        <a class="bottone" href="#prenota">Prenota il tuo orario</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="listino">
+    <div class="wrap">
+      <h2>Listino</h2>
+      <p class="sotto">Prezzi chiari, niente sorprese. Paghi in negozio, anche con carta.</p>
+      <ul class="listino" id="listino-lista"></ul>
+    </div>
+  </section>
+
+  <section class="chiara" id="prenota">
+    <div class="wrap">
+      <h2>Prenota</h2>
+      <p class="sotto">Gli orari liberi si aggiornano in base alla durata del servizio che scegli.</p>
+      <div class="passi">
+        <div class="passo">
+          <h3><em>1</em>Cosa ti facciamo</h3>
+          <div class="scelte" id="s-servizio"></div>
+        </div>
+        <div class="passo">
+          <h3><em>2</em>Con chi</h3>
+          <div class="scelte" id="s-barbiere"></div>
+        </div>
+        <div class="passo">
+          <h3><em>3</em>Che giorno</h3>
+          <div class="scelte" id="s-giorno"></div>
+        </div>
+        <div class="passo">
+          <h3><em>4</em>A che ora</h3>
+          <div class="scelte orari-slot" id="s-ora"></div>
+        </div>
+      </div>
+
+      <div class="conferma" id="conferma" hidden>
+        <p id="riassunto"></p>
+        <div class="campi">
+          <label>Il tuo nome<input id="nome" autocomplete="name"></label>
+          <button class="bottone" type="button" id="invia">Conferma su WhatsApp</button>
+        </div>
+        <div class="anteprima" id="anteprima" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="orari">
+    <div class="wrap due">
+      <div>
+        <h2>Orari e indirizzo</h2>
+        <address>Via Borsieri 00, 20159 Milano<br>Metro M5 Isola, 2 minuti a piedi</address>
+        <table class="orari" id="tab-orari" aria-label="Orari di apertura"></table>
+      </div>
+      <iframe class="mappa" title="Mappa: quartiere Isola, Milano" loading="lazy"
+        src="https://maps.google.com/maps?q=Isola%2C%20Milano&z=15&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Barberia Nello · Via Borsieri 00, Milano · tel. 02 0000 0000</span>
+    <span>Sito realizzato da <a href="../../">Andrea Marranca</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---------- dati: per un cliente vero basta cambiare questi ---------- */
+const SERVIZI = [
+  {nome:"Taglio",                 min:30, prezzo:22, desc:"Forbice e macchinetta, shampoo e piega."},
+  {nome:"Taglio e barba",         min:50, prezzo:32, desc:"Il pacchetto completo, con panno caldo."},
+  {nome:"Barba",                  min:20, prezzo:15, desc:"Regolazione, contorno a rasoio e olio."},
+  {nome:"Rasatura tradizionale",  min:30, prezzo:20, desc:"Pennello, rasoio a mano libera e panni caldi."},
+  {nome:"Sfumatura",              min:40, prezzo:25, desc:"Fade a zero o a scalare, rifinita a rasoio."},
+  {nome:"Taglio bambino",         min:20, prezzo:15, desc:"Fino a 12 anni."}
+];
+const BARBIERI = ["Nello", "Davide"];
+// giorno 0 = domenica. null = chiuso
+const ORARI = [null, null, ["09:00","19:30"], ["09:00","19:30"], ["09:00","19:30"], ["09:00","20:00"], ["08:30","18:00"]];
+const NOMI_GIORNI = ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"];
+const NUMERO_WHATSAPP = ""; // es. "393401234567". Vuoto = demo, mostra solo l'anteprima
+
+/* ---------- utilità ---------- */
+const ADESSO = new Date();
+const aMin = s => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+const hhmm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* agenda finta ma stabile: blocchi da 30 minuti già presi. In un sito vero arriverebbe da un calendario condiviso */
+function preso(barbiere, data, minuto){
+  const k = data.getFullYear() * 400 + data.getMonth() * 32 + data.getDate();
+  return ((k * 31 + Math.floor(minuto / 30) * 17 + barbiere * 7) % 9) < 3;
+}
+function libero(barbiere, data, inizio, durata){
+  for(let m = inizio; m < inizio + durata; m += 30) if(preso(barbiere, data, m)) return false;
+  return true;
+}
+
+/* ---------- stato aperto/chiuso ---------- */
+(function(){
+  const o = ORARI[ADESSO.getDay()], m = ADESSO.getHours() * 60 + ADESSO.getMinutes();
+  const el = document.getElementById('stato'); let t;
+  if(o && m >= aMin(o[0]) && m < aMin(o[1])){ el.classList.add('aperto'); t = 'Aperto adesso, fino alle ' + o[1]; }
+  else if(o && m < aMin(o[0])) t = 'Apriamo oggi alle ' + o[0];
+  else t = 'Chiuso adesso. Puoi prenotare per i prossimi giorni';
+  el.querySelector('span').textContent = t;
+})();
+
+/* ---------- listino e orari ---------- */
+document.getElementById('listino-lista').innerHTML = SERVIZI.map(s =>
+  '<li><div class="r"><b>' + s.nome + '</b><span>' + s.prezzo + ' €</span></div><p>' + s.desc + ' ' + s.min + ' minuti.</p></li>').join('');
+document.getElementById('tab-orari').innerHTML = [1,2,3,4,5,6,0].map(g =>
+  '<tr' + (g === ADESSO.getDay() ? ' class="oggi"' : '') + '><td>' + NOMI_GIORNI[g] + (g === ADESSO.getDay() ? ' (oggi)' : '') +
+  '</td><td>' + (ORARI[g] ? ORARI[g].join('–') : 'chiuso') + '</td></tr>').join('');
+
+/* ---------- prenotazione ---------- */
+let servizio = null, barbiere = null, data = null, ora = null, assegnato = null;
+
+// prossimi giorni di apertura
+const giorni = [];
+for(let i = 0; giorni.length < 6 && i < 14; i++){
+  const d = new Date(ADESSO.getFullYear(), ADESSO.getMonth(), ADESSO.getDate() + i);
+  if(ORARI[d.getDay()]) giorni.push(d);
+}
+
+function bottoni(id, voci, scelto, onClick){
+  const box = document.getElementById(id);
+  box.innerHTML = voci.map((v, i) =>
+    '<button type="button" data-i="' + i + '" aria-pressed="' + (i === scelto) + '"' + (v.off ? ' disabled' : '') + '>' + v.html + '</button>').join('');
+  box.querySelectorAll('button').forEach(b => b.addEventListener('click', () => onClick(Number(b.dataset.i))));
+}
+
+function slotDelGiorno(){
+  if(servizio === null || barbiere === null || data === null) return [];
+  const o = ORARI[data.getDay()], dur = SERVIZI[servizio].min;
+  const oggi = data.toDateString() === ADESSO.toDateString();
+  const oraMin = ADESSO.getHours() * 60 + ADESSO.getMinutes() + 30;   // almeno mezz'ora di preavviso
+  const out = [];
+  for(let m = aMin(o[0]); m + dur <= aMin(o[1]); m += 30){
+    if(oggi && m < oraMin) continue;
+    const candidati = barbiere === BARBIERI.length ? BARBIERI.map((_, i) => i) : [barbiere];
+    const chi = candidati.find(b => libero(b, data, m, dur));
+    out.push({m, chi, off: chi === undefined});
+  }
+  return out;
+}
+
+function disegna(){
+  bottoni('s-servizio', SERVIZI.map(s => ({html: s.nome + '<small>' + s.min + ' min · ' + s.prezzo + ' €</small>'})), servizio,
+    i => { servizio = i; ora = null; disegna(); });
+  bottoni('s-barbiere', BARBIERI.map(b => ({html: b})).concat([{html:'Il primo libero'}]), barbiere,
+    i => { barbiere = i; ora = null; disegna(); });
+  bottoni('s-giorno', giorni.map(d => ({html: d.toLocaleDateString('it-IT', {weekday:'short'}) + '<small>' + d.toLocaleDateString('it-IT', {day:'numeric', month:'short'}) + '</small>'})),
+    giorni.findIndex(d => data && d.getTime() === data.getTime()),
+    i => { data = giorni[i]; ora = null; disegna(); });
+
+  const box = document.getElementById('s-ora');
+  if(servizio === null || barbiere === null || data === null){
+    box.innerHTML = '<p class="vuoto">Scegli servizio, barbiere e giorno per vedere gli orari liberi.</p>';
+  } else {
+    const slot = slotDelGiorno();
+    if(!slot.some(s => !s.off)){
+      box.innerHTML = '<p class="vuoto">Nessun orario libero per questo giorno. Prova un altro giorno o un altro barbiere.</p>';
+    } else {
+      bottoni('s-ora', slot.map(s => ({html: hhmm(s.m), off: s.off})), slot.findIndex(s => s.m === ora),
+        i => { ora = slot[i].m; assegnato = slot[i].chi; disegna(); });
+    }
+  }
+
+  const conf = document.getElementById('conferma');
+  if(ora === null){ conf.hidden = true; return; }
+  conf.hidden = false;
+  const s = SERVIZI[servizio];
+  document.getElementById('riassunto').innerHTML = '<b>' + s.nome + '</b> con <b>' + BARBIERI[assegnato] + '</b>, ' +
+    data.toLocaleDateString('it-IT', {weekday:'long', day:'numeric', month:'long'}) + ' alle <b>' + hhmm(ora) + '</b>. ' +
+    s.min + ' minuti, ' + s.prezzo + ' €.';
+}
+
+document.getElementById('invia').addEventListener('click', () => {
+  const s = SERVIZI[servizio], nome = document.getElementById('nome').value.trim();
+  const msg = 'Ciao, vorrei prenotare: ' + s.nome + ' con ' + BARBIERI[assegnato] + ', ' +
+    data.toLocaleDateString('it-IT', {weekday:'long', day:'numeric', month:'long'}) + ' alle ' + hhmm(ora) + '.' + (nome ? ' Sono ' + nome + '.' : '');
+  if(NUMERO_WHATSAPP){
+    window.open('https://wa.me/' + NUMERO_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  } else {
+    const box = document.getElementById('anteprima');
+    box.textContent = 'Questo è il messaggio che arriverebbe alla barberia:\n\n' + msg;
+    box.classList.add('vista');
+  }
+});
+
+disegna();
+</script>
+</body>
+</html>
