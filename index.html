@@ -219,6 +219,8 @@
   .tech{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:14px}
   .tech .ico{width:30px; height:30px; border-radius:8px; padding:5px}
   .proj p{font-size:14.5px; color:#B7B7D2; margin:0 0 16px; flex:1}
+  .views{display:flex; justify-content:center; flex-wrap:wrap; gap:8px 22px; padding-top:14px; border-top:1px solid var(--stroke)}
+  .proj .views .view{border-top:0; padding-top:0}
   .proj .view{
     display:block; text-align:center; font-family:var(--mono); font-size:13px;
     padding-top:14px; border-top:1px solid var(--stroke); color:var(--sky);
@@ -263,6 +265,7 @@
   <div class="wrap nav-in">
     <a class="brand" href="#home">andrea.dev</a>
     <nav class="nav-links" aria-label="Sezioni">
+      <a href="#siti">Siti web</a>
       <a href="#chi-sono">Chi sono</a>
       <a href="#skills">Skills</a>
       <a href="#progetti">Progetti</a>
@@ -308,6 +311,15 @@
     </div>
   </section>
 
+  <!-- ================= SITI PER ATTIVITÀ ================= -->
+  <section id="siti">
+    <div class="wrap">
+      <h2>Siti per attività</h2>
+      <p class="sub">Landing page per ristoranti, B&amp;B e piccole attività: si leggono bene da telefono, si caricano in un attimo e si aggiornano cambiando poche righe. Le attività sono di fantasia, i siti funzionano davvero: aprili e provali.</p>
+      <div class="proj-grid" id="sitiRoot"></div>
+    </div>
+  </section>
+
   <!-- ================= CHI SONO ================= -->
   <section id="chi-sono">
     <div class="wrap">
@@ -346,7 +358,7 @@
           <!-- MODIFICA TU: anno di inizio della magistrale -->
           <div class="when">2025 — oggi</div>
           <div class="what">
-            <h4>Laurea magistrale in Ingegneria Informatica Intelligenza Artificiale e Data Analitics</h4>
+            <h4>Laurea magistrale in Ingegneria Informatica Intelligenza Artificiale e Data Analytics</h4>
             <p class="org">Politecnico di Torino</p>
             <p>Indirizzo seguito e aree su cui ti stai specializzando.</p>
           </div>
@@ -438,7 +450,7 @@
   <div class="wrap">
     <span>© 2026 Andrea Marranca</span>
     <!-- MODIFICA TU: mese e anno dell'ultimo aggiornamento -->
-    <span>Aggiornato ad agosto 2026 · scritto a mano, senza framework</span>
+    <span>Aggiornato a novembre 2026 · scritto a mano, senza framework</span>
   </div>
 </footer>
 
@@ -623,13 +635,30 @@ const PROJECTS = [
     desc:"Motore di ricerca semantica sui materiali universitari: risponde a domande in linguaggio naturale citando sempre file e pagina di origine. Embedding locali con sentence-transformers e archivio vettoriale su SQLite. Il set di valutazione scritto a mano ha permesso di diagnosticare due difetti del retrieval e portare il recall@5 dal 50% al 93% su 14 domande."
   },
      {
-    name:"BIT-Tycon",
+    name:"BIT-Tycoon",
     kind:"Gioco da autodidatta",
     img:"img/bit_tycoon.png",
     tech:["html","css","js"],
-    url:"https://github.com/Andrymar02/bit-tycoon.git",
-          utl:"https://andrymar02.github.io/bit-tycoon/",
-    desc:"Progetto base pronto all'uso per la scheda LandTiger: driver e periferiche già configurati, così un nuovo progetto parte dal codice che conta invece che dal setup."
+    url:"https://github.com/Andrymar02/bit-tycoon",
+    live:"https://andrymar02.github.io/bit-tycoon/",
+    desc:"Gioco gestionale in stile tycoon scritto in HTML, CSS e JavaScript puro, senza framework: si gioca direttamente nel browser."
+  }
+];
+
+/* ============================================================
+   3b. SITI PER ATTIVITÀ (demo)
+   Ogni demo vive nella cartella demo/<nome>/ di questo repo.
+   live = indirizzo del sito, url = codice su GitHub.
+   ============================================================ */
+const DEMOS = [
+  {
+    name:"Osteria del Ciabot",
+    kind:"Ristorante · Landing page",
+    img:"img/demo_osteria.png",
+    tech:["html","css","js"],
+    live:"demo/osteria/",
+    url:"https://github.com/Andrymar02/Andrymar02.github.io/tree/main/demo/osteria",
+    desc:"Osteria piemontese a Torino. Lavagna con i piatti del giorno che cambiano da soli, menù a schede, orari con avviso aperto/chiuso in tempo reale e prenotazione che apre WhatsApp con il messaggio già scritto."
   }
 ];
 
@@ -692,8 +721,8 @@ document.getElementById('skillsRoot').innerHTML = SKILLS.map(g =>
   }).join('') + '</div>'
 ).join('');
 
-document.getElementById('projRoot').innerHTML = PROJECTS.map(p =>
-  '<article class="proj">' +
+function card(p){
+  return '<article class="proj">' +
     '<div class="thumb">' +
       (p.img ? '<img src="' + p.img + '" alt="Anteprima di ' + p.name + '" loading="lazy">'
              : '<span class="ph">' + p.name + '</span>') +
@@ -702,9 +731,14 @@ document.getElementById('projRoot').innerHTML = PROJECTS.map(p =>
     '<p class="kind">' + p.kind + '</p>' +
     '<div class="tech">' + p.tech.map(icon).join('') + '</div>' +
     '<p>' + p.desc + '</p>' +
-    '<a class="view" href="' + p.url + '" target="_blank" rel="noopener">Apri su GitHub ↗</a>' +
-  '</article>'
-).join('');
+    '<div class="views">' +
+      (p.live ? '<a class="view" href="' + p.live + '" target="_blank" rel="noopener">Apri il sito ↗</a>' : '') +
+      '<a class="view" href="' + p.url + '" target="_blank" rel="noopener">Codice ↗</a>' +
+    '</div>' +
+  '</article>';
+}
+document.getElementById('sitiRoot').innerHTML = DEMOS.map(card).join('');
+document.getElementById('projRoot').innerHTML = PROJECTS.map(card).join('');
 
 /* ============================================================
    5. TERMINALE
@@ -728,6 +762,7 @@ const FONT = {
 
 const SEZIONI = {
   home:'home', '~':'home', '..':'home',
+  siti:'siti', web:'siti', demo:'siti',
   chi:'chi-sono', about:'chi-sono', 'chi-sono':'chi-sono',
   skills:'skills', competenze:'skills',
   progetti:'progetti', projects:'progetti', lavori:'progetti',
@@ -761,7 +796,7 @@ function runCmd(riga){
   ];
 
   if(cmd === 'ls' || cmd === 'dir')
-    return ['chi-sono/   skills/   progetti/   cv/   contatti/'];
+    return ['siti/   chi-sono/   skills/   progetti/   cv/   contatti/'];
 
   if(cmd === 'whoami')
     return ['<span class="ok">Andrea Marranca</span> — ingegnere informatico, Politecnico di Torino.',
