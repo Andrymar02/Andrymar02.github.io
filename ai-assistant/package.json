@@ -1,0 +1,13 @@
+{
+  "name": "assistente-ai-struttura",
+  "version": "1.0.0",
+  "description": "Assistente AI per il sito di un B&B o di un ristorante: risponde ai clienti e controlla la disponibilità.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "test": "NODE_ENV=test node test.js"
+  },
+  "engines": { "node": ">=20.6" },
+  "dependencies": { "express": "^4.21.0" }
+}
