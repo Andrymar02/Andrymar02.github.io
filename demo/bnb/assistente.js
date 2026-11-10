@@ -37,7 +37,8 @@
   .az-b{max-width:85%;padding:10px 13px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-line}
   .az-b.bot{background:#fff;border:1px solid #E3E8EF;border-bottom-left-radius:4px;align-self:flex-start}
   .az-b.io{background:var(--cobalto,#1E4C9A);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
-  .az-b.bot b{font-weight:700}
+  .az-b.bot b{font-weight:700;white-space:nowrap}
+  @media (max-width:480px){ .az-pannello{left:10px;right:10px;bottom:10px;width:auto;max-width:none;height:calc(100vh - 20px);max-height:600px} .az-bottone{right:14px;bottom:14px} }
   .az-scrive{align-self:flex-start;background:#fff;border:1px solid #E3E8EF;border-radius:14px;padding:12px 14px;display:flex;gap:4px}
   .az-scrive span{width:7px;height:7px;border-radius:50%;background:#9AA6B8;animation:az-p 1s infinite}
   .az-scrive span:nth-child(2){animation-delay:.15s}.az-scrive span:nth-child(3){animation-delay:.3s}
