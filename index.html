@@ -566,15 +566,12 @@ const SKILLS = [
    ============================================================ */
 const PROJECTS = [
   {
-    // MODIFICA TU: in "desc" sostituisci [IL TUO RUOLO] con l'area di cui ti sei occupato
-    // all'hackathon. Quando hai uno screenshot dell'app o un'illustrazione del Pupo,
-    // mettila in img/ e scrivi qui il nome del file al posto di null.
     name:"PUPO",
     kind:"AI · Reply Student Tech Clash 2026",
-    img:null,
+    img:"img/pupo.jpg",
     tech:["python","openai","fastapi","sqlite","expo","ts"],
     url:"https://github.com/Andrymar02/PUPO",
-    desc:"Agente AI che fa lo studente: non sa nulla e impara solo da ciò che gli spieghi, così insegnandogli la materia scopri argomento per argomento quanto sei davvero preparato. La scelta che regge tutto il progetto sono due database separati — il materiale del corso e la \"mente\" del Pupo — con un test che ispeziona gli import del codice e garantisce che l'agente non possa attingere al materiale: la percentuale di preparazione misura quindi solo ciò che gli hai insegnato, non ciò che il modello già sapeva. Nato in squadra da quattro persone all'hackathon Reply (direzione AI on Campus), dove mi sono occupato di [IL TUO RUOLO]; proseguo lo sviluppo da solo con il consenso del gruppo."
+    desc:"Agente AI che fa lo studente: non sa nulla, impara solo da ciò che gli spieghi — errori compresi — e non finge mai di aver capito: se dici \"funziona e basta\", ti ferma e chiede perché. Spiegandogli la materia scopri argomento per argomento quanto sei preparato, prima dell'esame invece che durante. A reggere tutto è l'architettura: il materiale del corso sta in un database a cui l'agente non può accedere, con un test che ispeziona gli import e lo dimostra, mentre un modulo di confronto separato è l'unico a vedere entrambi e restituisce solo numeri. Così la percentuale misura ciò che gli hai insegnato, non ciò che il modello già sapeva. L'idea è mia, affinata poi dal gruppo di quattro all'hackathon Reply (direzione AI on Campus); ho sviluppato il codice e porto avanti il progetto."
   },
   {
     name:"ultima-corsa",
