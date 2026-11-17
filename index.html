@@ -511,7 +511,10 @@ const ICONS = {
   arm:      {label:"ARM Cortex-M", txt:"ARM"},
   keil:     {label:"Keil µVision", txt:"µV"},
   telegram: {label:"Telegram Bot API", txt:"TG"},
-  fastapi: {label:"FastAPI", path:"fastapi/fastapi-original"}
+  fastapi: {label:"FastAPI", path:"fastapi/fastapi-original"},
+  ts:      {label:"TypeScript", path:"typescript/typescript-original"},
+  expo:    {label:"Expo · React Native", txt:"EXP"},
+  openai:  {label:"OpenAI API", txt:"AI"}
 };
 
 /* ============================================================
@@ -562,6 +565,17 @@ const SKILLS = [
    riquadro segnaposto.
    ============================================================ */
 const PROJECTS = [
+  {
+    // MODIFICA TU: in "desc" sostituisci [IL TUO RUOLO] con l'area di cui ti sei occupato
+    // all'hackathon. Quando hai uno screenshot dell'app o un'illustrazione del Pupo,
+    // mettila in img/ e scrivi qui il nome del file al posto di null.
+    name:"PUPO",
+    kind:"AI · Reply Student Tech Clash 2026",
+    img:null,
+    tech:["python","openai","fastapi","sqlite","expo","ts"],
+    url:"https://github.com/Andrymar02/PUPO",
+    desc:"Agente AI che fa lo studente: non sa nulla e impara solo da ciò che gli spieghi, così insegnandogli la materia scopri argomento per argomento quanto sei davvero preparato. La scelta che regge tutto il progetto sono due database separati — il materiale del corso e la \"mente\" del Pupo — con un test che ispeziona gli import del codice e garantisce che l'agente non possa attingere al materiale: la percentuale di preparazione misura quindi solo ciò che gli hai insegnato, non ciò che il modello già sapeva. Nato in squadra da quattro persone all'hackathon Reply (direzione AI on Campus), dove mi sono occupato di [IL TUO RUOLO]; proseguo lo sviluppo da solo con il consenso del gruppo."
+  },
   {
     name:"ultima-corsa",
     kind:"Esame · Applicazioni Web I",
